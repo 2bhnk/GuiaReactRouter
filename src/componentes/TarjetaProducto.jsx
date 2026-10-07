@@ -1,13 +1,11 @@
 import Badge from 'react-bootstrap/Badge'
 import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
+import { Link } from 'react-router'
 
 import { formatearPrecio } from '../datos/productos.js'
 
-// Todavía sin React Router: para "ir al detalle" avisamos al padre con una
-// función. Fíjate en lo que pierde esto respecto de un enlace real: no se
-// puede abrir en una pestaña nueva ni copiar la dirección.
-export default function TarjetaProducto({ producto, onVerDetalle }) {
+export default function TarjetaProducto({ producto }) {
   return (
     <Card className="h-100 shadow-sm">
       <Card.Body className="d-flex flex-column">
@@ -28,7 +26,7 @@ export default function TarjetaProducto({ producto, onVerDetalle }) {
         </Card.Text>
 
         <div className="mt-auto d-grid">
-          <Button variant="outline-primary" onClick={onVerDetalle}>
+          <Button as={Link} to={`/producto/${producto.id}`} variant="outline-primary">
             Ver detalle
           </Button>
         </div>
